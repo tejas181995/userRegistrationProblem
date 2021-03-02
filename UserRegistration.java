@@ -13,6 +13,14 @@ class UserRegistration{
         Pattern p = Pattern.compile(email);
         return(Pattern.matches("^[_A-Za-z0-9-\\+]+(\\.[A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email));
     }
+    public boolean checkPhoneNumber(String Number){
+        Pattern p = Pattern.compile(Number);
+        return(Pattern.matches("^[0-9]{2}[ ][6-9]{1}[0-9]{9}", Number));
+    }
+    public boolean checkPassword(String password){
+        Pattern p = Pattern.compile(password);
+        return(Pattern.matches("^[A-za-z0-9]{8,}$",password));
+    }
     public boolean confirmValidation(boolean valid){
         if(valid){
             System.out.println("Updated");
@@ -27,6 +35,8 @@ class UserRegistration{
         String firstName;
         String lastName;
         String email;
+        String phoneNumber;
+        String password;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter firstName");
         firstName = sc.nextLine();
@@ -40,6 +50,14 @@ class UserRegistration{
         email = sc.nextLine();
         while(!user.confirmValidation(user.checkEmail(email)))
             email = sc.nextLine();
+        System.out.println("Enter Phone Number");
+        phoneNumber = sc.nextLine();
+        while(!user.confirmValidation(user.checkPhoneNumber(phoneNumber)))
+            phoneNumber = sc.nextLine();
+        System.out.println("Enter Password");
+        password = sc.nextLine();
+        while(!user.confirmValidation(user.checkPassword(password)));
+            password = sc.nextLine();
 
     }
 }
