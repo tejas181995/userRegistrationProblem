@@ -11,18 +11,15 @@ class UserRegistration{
     }
     public boolean checkEmail(String email){
         Pattern p = Pattern.compile(email);
-        return(Pattern.matches("^^(?=.*[0-9])"
-        + "(?=.*[a-z])(?=.*[A-Z])"
-        + "(?=.*[@#$%^&+=])"
-        + "(?=\\S+$).{8,20}$";, email));
+        return(Pattern.matches("^[_A-Za-z0-9-\\+]+(\\.[A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email));
     }
     public boolean checkPhoneNumber(String Number){
         Pattern p = Pattern.compile(Number);
-        return(Pattern.matches("^[0-9]{2}[ ][6-9]{1}[0-9]{9}", Number));
+        return(Pattern.matches("^[0-9]{2}[ ][6-9]{1}[0-9]{9}$", Number));
     }
     public boolean checkPassword(String password){
         Pattern p = Pattern.compile(password);
-        return(Pattern.matches("^[A-za-z0-9]{8,}$",password));
+        return(Pattern.matches("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,}$",password));
     }
     public boolean confirmValidation(boolean valid){
         if(valid){
