@@ -1,4 +1,4 @@
-import java.util.Scanner;
+kimport java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +11,7 @@ class UserRegistration{
     }
     public boolean checkEmail(String email){
         Pattern p = Pattern.compile(email);
-        return(Pattern.matches("^[_A-Za-z0-9-\\+]+(\\.[A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email));
+        return(Pattern.matches("^(?=.*[A-Z]).{1,}$", email));
     }
     public boolean checkPhoneNumber(String Number){
         Pattern p = Pattern.compile(Number);
@@ -19,7 +19,8 @@ class UserRegistration{
     }
     public boolean checkPassword(String password){
         Pattern p = Pattern.compile(password);
-        return(Pattern.matches("^[A-za-z0-9]{8,}$",password));
+        return(Pattern.matches("^(?=.*[0-9])"
+        + "(?=.*[a-z])(?=.*[A-Z])",password));
     }
     public boolean confirmValidation(boolean valid){
         if(valid){
