@@ -9,6 +9,10 @@ class UserRegistration{
         return(Pattern.matches("^[A-Z]{1}[a-z]{2,15}$",name));
 
     }
+    public boolean checkEmail(String email){
+        Pattern p = Pattern.compile(email);
+        return(Pattern.matches("^[_A-Za-z0-9-\\+]+(\\.[A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email));
+    }
     public boolean confirmValidation(boolean valid){
         if(valid){
             System.out.println("Updated");
@@ -22,6 +26,7 @@ class UserRegistration{
         UserRegistration user = new UserRegistration();
         String firstName;
         String lastName;
+        String email;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter firstName");
         firstName = sc.nextLine();
@@ -31,6 +36,10 @@ class UserRegistration{
         lastName = sc.nextLine();
         while(!user.confirmValidation(user.checkName(lastName)))
             lastName = sc.nextLine();
+        System.out.println("Enter E-mail");
+        email = sc.nextLine();
+        while(!user.confirmValidation(user.checkEmail(email)))
+            email = sc.nextLine();
 
     }
 }
